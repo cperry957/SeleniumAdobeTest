@@ -81,9 +81,9 @@ namespace SeleniumCsharp
         string AS3DRows = "//div[contains(@class,'row with-gutter')]";
         string aFindText = "//a[contains(., '";
         string pFindText = "//p[contains(., '";
-        string SideBarText = "//div[contains(@data-testid,'browse-sidebar-checkboxes-product')]//label//span[text()]";
+        string SideBarText = "//div[contains(@data-testid,'browse-sidebar-checkboxes-product')]//span[text()]";
         string TemplatesSideBarText = "//span[contains(@data-t,'templates-type-asset-subcategory-filter-section')]//label[text()]";
-       
+
 
 
         private IWebDriver driver;
@@ -105,6 +105,7 @@ namespace SeleniumCsharp
         [Test]
         public void navigatetosite()
         {
+            Thread.Sleep(1000);
             // Navigating to the website
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
@@ -117,6 +118,7 @@ namespace SeleniumCsharp
         [Test]
         public void verifyMenuItemcount()
         {
+            Thread.Sleep(1000);
             // Navigating to the website
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
@@ -137,6 +139,7 @@ namespace SeleniumCsharp
         [Test]
         public void navigateToPhotosTab()
         {
+            Thread.Sleep(1000);
             // Navigating to the website
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
@@ -191,6 +194,7 @@ namespace SeleniumCsharp
         [Test]
         public void navigateToIllustrationsTab()
         {
+            Thread.Sleep(1000);
             // Navigating to the website
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
@@ -236,6 +240,7 @@ namespace SeleniumCsharp
         [Test]
         public void navigateToVectorsTab()
         {
+            Thread.Sleep(1000);
             // Navigating to the website
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
@@ -284,6 +289,7 @@ namespace SeleniumCsharp
         [Test]
         public void navigateTovideosTab()
         {
+            Thread.Sleep(1000);
             // Navigating to the website
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
@@ -351,6 +357,7 @@ namespace SeleniumCsharp
         [Test]
         public void navigateToAudioTab()
         {
+            Thread.Sleep(1000);
             // Navigating to the website
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
@@ -393,14 +400,14 @@ namespace SeleniumCsharp
 
             // Clicking on the "LOOP" input
             driver.FindElement(By.XPath(InputFindByName + "LOOP" + FindTextClose)).Click();
-            Thread.Sleep(1000);           
+            Thread.Sleep(1000);
 
             // Asserting that the number of results has changed
             Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(AudioNumberOfResultsFound)).Text);
 
             // Clicking on the "LOOP" input again
             driver.FindElement(By.XPath(InputFindByName + "LOOP" + FindTextClose)).Click();
-            //Thread.Sleep(1000);
+            Thread.Sleep(1000);
 
             // Asserting that the number of results has returned to the baseline
             Assert.AreEqual(Baceline, driver.FindElement(By.XPath(AudioNumberOfResultsFound)).Text);
@@ -471,6 +478,7 @@ namespace SeleniumCsharp
         [Test]
         public void navigateToTemplatesTab()
         {
+            Thread.Sleep(1000);
             // Navigating to the website
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
@@ -487,7 +495,7 @@ namespace SeleniumCsharp
             driver.FindElement(By.XPath(H3FindText + "Photoshop templates" + FindTextClose)).Click();
 
             // Waiting for 1 second
-           Thread.Sleep(1000);
+            Thread.Sleep(1000);
 
             // Clicking on the first search result
             driver.FindElement(By.XPath(SearchResultdiv1)).Click();
@@ -516,95 +524,77 @@ namespace SeleniumCsharp
             Assert.IsNotEmpty(driver.FindElements(By.XPath(DivClassGroup + SpanFindText + "Download free with trial" + FindTextClose)));
 
             // Waiting for 1 second
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // Storing the baseline number of results
             var Baceline = driver.FindElement(By.XPath(NumberOfResults)).Text;
-            
+
             IList<IWebElement> all = driver.FindElements(By.XPath(TemplatesSideBarText));
 
-            String[] allText = new String[all.Count];
-            int i = 0;
-            // int j = 0;
-            foreach (IWebElement element in all)
-            {
-                allText[i++] = element.Text;
-            }
-
-            for (int j = 2; j != i; j++)
-            {
-                driver.FindElement(By.XPath(labelFindText + allText[j] + FindTextClose)).Click();
-                Thread.Sleep(5000);
-                Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(PluginResults)).Text);
-                driver.FindElement(By.XPath(labelFindText + allText[j] + FindTextClose)).Click();
-                Thread.Sleep(1000);
-            }
-
-            /*
-
+            Thread.Sleep(2000);
             // Clicking on the "Illustrator" label
-            driver.FindElement(By.XPath(labelFindText + "Illustrator" + FindTextClose), 5).Click();
+            driver.FindElement(By.XPath(labelFindText + "Illustrator" + FindTextClose)).Click();
             // Waiting for 5 seconds
             Thread.Sleep(5000);
 
             // Asserting that the number of results has changed
-            Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults), 5).Text);
+            Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
 
             // Clicking on the "Illustrator" label again
-            driver.FindElement(By.XPath(labelFindText + "Illustrator" + FindTextClose), 5).Click();
+            driver.FindElement(By.XPath(labelFindText + "Illustrator" + FindTextClose)).Click();
             // Waiting for 1 second
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // Asserting that the number of results is back to the baseline
-            Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults), 5).Text);
+            Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
 
             // Clicking on the "InDesign" label
-            driver.FindElement(By.XPath(labelFindText + "InDesign" + FindTextClose), 5).Click();
-            // Waiting for 4 seconds
-            Thread.Sleep(4000);
+            driver.FindElement(By.XPath(labelFindText + "InDesign" + FindTextClose)).Click();
+            // Waiting for 5 seconds
+            Thread.Sleep(5000);
 
             // Asserting that the number of results has changed
-            Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults), 5).Text);
+            Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
 
             // Clicking on the "InDesign" label again
-            driver.FindElement(By.XPath(labelFindText + "InDesign" + FindTextClose), 5).Click();
+            driver.FindElement(By.XPath(labelFindText + "InDesign" + FindTextClose)).Click();
             // Waiting for 1 second
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // Asserting that the number of results is back to the baseline
-            Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults), 5).Text);
+            Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
 
             // Clicking on the "Premiere Pro" label
-            driver.FindElement(By.XPath(labelFindText + "Premiere Pro" + FindTextClose), 5).Click();
+            driver.FindElement(By.XPath(labelFindText + "Premiere Pro" + FindTextClose)).Click();
             // Waiting for 5 seconds
             Thread.Sleep(5000);
 
             // Asserting that the number of results has changed
-            Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults), 5).Text);
+            Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
 
             // Clicking on the "Premiere Pro" label again
-            driver.FindElement(By.XPath(labelFindText + "Premiere Pro" + FindTextClose), 5).Click();
+            driver.FindElement(By.XPath(labelFindText + "Premiere Pro" + FindTextClose)).Click();
             // Waiting for 1 second
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // Asserting that the number of results is back to the baseline
-            Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults), 5).Text);
+            Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
 
             // Clicking on the "Premiere Rush" label
-            driver.FindElement(By.XPath(labelFindText + "Premiere Rush" + FindTextClose), 5).Click();
+            driver.FindElement(By.XPath(labelFindText + "Premiere Rush" + FindTextClose)).Click();
             // Waiting for 5 seconds
             Thread.Sleep(5000);
 
             // Asserting that the number of results has changed
-            Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults), 5).Text);
+            Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
 
             // Clicking on the "Premiere Rush" label again
-            driver.FindElement(By.XPath(labelFindText + "Premiere Rush" + FindTextClose), 5).Click();
+            driver.FindElement(By.XPath(labelFindText + "Premiere Rush" + FindTextClose)).Click();
             // Waiting for 1 second
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // Asserting that the number of results is back to the baseline
-            Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults), 5).Text);
+            Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
 
             // Clicking on the "After Effects" label
             driver.FindElement(By.XPath(labelFindText + "After Effects" + FindTextClose)).Click();
@@ -617,7 +607,7 @@ namespace SeleniumCsharp
             // Clicking on the "After Effects" label again
             driver.FindElement(By.XPath(labelFindText + "After Effects" + FindTextClose)).Click();
             // Waiting for 1 second
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // Asserting that the number of results is back to the baseline
             Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
@@ -625,7 +615,7 @@ namespace SeleniumCsharp
             // Clicking on the "Undiscovered Content" label
             driver.FindElement(By.XPath(labelFindText + "Undiscovered Content" + FindTextClose)).Click();
             // Waiting for 5 seconds
-            Thread.Sleep(5000);
+            Thread.Sleep(6000);
 
             // Asserting that the number of results has changed
             Assert.AreNotEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
@@ -633,7 +623,7 @@ namespace SeleniumCsharp
             // Clicking on the "Undiscovered Content" label again
             driver.FindElement(By.XPath(labelFindText + "Undiscovered Content" + FindTextClose)).Click();
             // Waiting for 1 second
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // Asserting that the number of results is back to the baseline
             Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
@@ -649,11 +639,11 @@ namespace SeleniumCsharp
             // Clicking on the "Local Artists" label again
             driver.FindElement(By.XPath(labelFindText + "Local Artists" + FindTextClose)).Click();
             // Waiting for 1 second
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // Asserting that the number of results is back to the baseline
             Assert.AreEqual(Baceline, driver.FindElement(By.XPath(NumberOfResults)).Text);
-            */
+
         }
 
 
@@ -661,6 +651,7 @@ namespace SeleniumCsharp
         [Test]
         public void navigateToFreeTab()
         {
+            Thread.Sleep(1000);
             // Navigate to the website
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
@@ -774,6 +765,7 @@ namespace SeleniumCsharp
         public void navigateToFontsTab()
 
         {
+            Thread.Sleep(1000);
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
             driver.FindElement(By.XPath(NavBarFindByText + "Fonts" + FindTextClose)).Click();
@@ -781,7 +773,7 @@ namespace SeleniumCsharp
             driver.SwitchTo().Window(driver.WindowHandles[1]);
 
             ReadOnlyCollection<IWebElement> itemsfound = driver.FindElements(By.XPath("//div[contains(@class, 'spectrum-grid-row')]"));
-           
+
             Assert.AreEqual(itemsfound.Count, 19);
 
             // Adding a delay of 1 second for demonstration purposes
@@ -795,7 +787,7 @@ namespace SeleniumCsharp
             Assert.IsNotEmpty(driver.FindElements(By.XPath("//button[contains(.,'Recommendations')]")));
             Assert.IsNotEmpty(driver.FindElements(By.XPath("//button[contains(.,'About')]")));
             Assert.IsNotEmpty(driver.FindElements(By.XPath("//button[contains(.,'Licensing')]")));
-            Assert.IsNotEmpty(driver.FindElements(By.XPath("//button[contains(.,'Details')]")));           
+            Assert.IsNotEmpty(driver.FindElements(By.XPath("//button[contains(.,'Details')]")));
 
         }
 
@@ -804,6 +796,7 @@ namespace SeleniumCsharp
         [Test]
         public void navigateToPluginsTab()
         {
+            Thread.Sleep(1000);
             // Navigating to the website
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 
@@ -826,19 +819,23 @@ namespace SeleniumCsharp
 
             // Storing the baseline text
             var Baceline = driver.FindElement(By.XPath(PluginResults)).Text;
-
+            Thread.Sleep(1000);
 
             IList<IWebElement> all = driver.FindElements(By.XPath(SideBarText));
 
             String[] allText = new String[all.Count];
             int i = 0;
-           // int j = 0;
+
+            Thread.Sleep(1000);
+
             foreach (IWebElement element in all)
             {
                 allText[i++] = element.Text;
             }
 
-            for (int j = 0; j != i; j++) 
+            Thread.Sleep(1000);
+
+            for (int j = 0; j != i; j++)
             {
                 driver.FindElement(By.XPath(labelFindText + allText[j] + FindTextClose)).Click();
                 Thread.Sleep(5000);
@@ -846,11 +843,11 @@ namespace SeleniumCsharp
                 driver.FindElement(By.XPath(labelFindText + allText[j] + FindTextClose)).Click();
                 Thread.Sleep(1000);
             }
-                   
+
 
             // Clicking on specific plugin labels and asserting that the results have changed
 
-            
+
         }
 
 
@@ -860,7 +857,7 @@ namespace SeleniumCsharp
         [Test]
         public void navigateTo3DTab()
         {
-            // did not start this part need to work on this
+            Thread.Sleep(1000);
             //driver.FindElement(By.XPath("//div[contains(@class, 'sc-kEmuub bYIRJi')]//li//a[(text()='3D')]")).Click();
             driver.Navigate().GoToUrl("https://stock.adobe.com/");
 

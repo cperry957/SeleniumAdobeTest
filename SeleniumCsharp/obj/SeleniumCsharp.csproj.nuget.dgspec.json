@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\selenium code project\\SeleniumCsharp\\SeleniumCsharp\\SeleniumCsharp.csproj": {}
+    "D:\\code projects\\SeleniumAdobeTest\\SeleniumCsharp\\SeleniumCsharp.csproj": {}
   },
   "projects": {
-    "D:\\selenium code project\\SeleniumCsharp\\SeleniumCsharp\\SeleniumCsharp.csproj": {
+    "D:\\code projects\\SeleniumAdobeTest\\SeleniumCsharp\\SeleniumCsharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\selenium code project\\SeleniumCsharp\\SeleniumCsharp\\SeleniumCsharp.csproj",
+        "projectUniqueName": "D:\\code projects\\SeleniumAdobeTest\\SeleniumCsharp\\SeleniumCsharp.csproj",
         "projectName": "SeleniumCsharp",
-        "projectPath": "D:\\selenium code project\\SeleniumCsharp\\SeleniumCsharp\\SeleniumCsharp.csproj",
+        "projectPath": "D:\\code projects\\SeleniumAdobeTest\\SeleniumCsharp\\SeleniumCsharp.csproj",
         "packagesPath": "C:\\Users\\cperr\\.nuget\\packages\\",
-        "outputPath": "D:\\selenium code project\\SeleniumCsharp\\SeleniumCsharp\\obj\\",
+        "outputPath": "D:\\code projects\\SeleniumAdobeTest\\SeleniumCsharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cperr\\AppData\\Roaming\\NuGet\\NuGet.Config",
